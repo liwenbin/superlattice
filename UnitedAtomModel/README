@@ -1,0 +1,14 @@
+The directory "SingleNanoParticle" contains the MATLAB code for
+generating LAMMPS data file for molecular dynamics simulation of a
+single alkanethiol-gold nanoparticle. The alkanethiol molecules are
+coarse-grained using united-atom model. A LAMMPS input file
+"lammps.input" is provided, which specifies the force field
+parameters. The presence of other files are explained by the
+annotations within the MATLAB code.
+
+The directory "Superlattice" contains the MATLAB code for generating
+LAMMPS data file for molecular dynamics simulation gold nanoparticle
+superlattice with different orientations.
+
+LAMMPS is an open-source classical molecular dynamics code under GPL
+license. See also http://lammps.sandia.gov/ for more information.
