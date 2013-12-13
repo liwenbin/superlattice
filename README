@@ -1,6 +1,6 @@
-A set of MATLAB programs for generating input LAMMPS files for
+A set of MATLAB programs for generating LAMMPS input files for
 molecular dynamics simulation of alkanethiol-gold nanoparticle
-superlattice . LAMMPS is a fast, free classical molecular dynamics
+superlattice. LAMMPS is a fast, free classical molecular dynamics
 code under GPL license. See http://lammps.sandia.gov/ for more
 information.
 
