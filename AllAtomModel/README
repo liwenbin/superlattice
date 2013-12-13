@@ -5,7 +5,7 @@ et al's MM3 force field [Ref: N. L. Allinger, Y. H. Yuh and J.-H. Lii,
 "Molecular Mechanics. The MM3 Force Field for Hydrocarbons. 1",
 J. Am. Chem. Soc. 111, 8551-8566 (1989)]. Within the directory, a
 LAMMPS input file "lammps.input" is also provided, which specifies the
-force field parameters. The presence of other files are explained by
+force field parameters. The presence of other files is explained by
 the annotations within the MATLAB code.
 
 The directory "Superlattice" contains the MATLAB code for generating
@@ -18,6 +18,42 @@ MM3 all-atom simulation. We provide these codes because the LAMMPS
 "class2" angle and dihedral styles have been slightly changed for MM3
 simulation. These changes include:
 
+(1) In LAMMPS class2 angle potential:
+
+http://lammps.sandia.gov/doc/angle_class2.html
+
+We change Ea = K2*(theta - theta0)^2 + K3*(theta - theta0)^3 +
+               K4*(theta - theta0)^4
+   to     Ea = K2*(theta - theta0)^2 + K3*(theta - theta0)^3 +
+               K4*(theta - theta0)^4 + K5*(theta - theta0)^5 +
+               K6*(theta - theta0)^6
+Namely, we add the fifth and sixth order angle terms.
+
+
+(2) In LAMMPS class2 dihedral potential:
+
+http://lammps.sandia.gov/doc/dihedral_class2.html
+
+We change "Embt" (middle-bond-torsion term) from
+Embt = (r_{jk} - r_{2})[A1*cos(phi) + A2*cos(2phi)
+       + A3*cos(3phi)
+
+to
+
+Embt = (r_{jk} - r_{2})[A1*cos(phi) + A2*cos(2phi)
+       + A3*(1+cos(3phi))
+
+Namely, "cos(3phi)" is replaced by "1+cos(3phi)".
+
+
+We also change "Eaat" (angle-angle-torsion term) from
+Eaat = M*(theta_{ijk} - theta1)(theta_{jkl} - theta2)*cos(phi)
+
+to 
+
+Eaat = M*(theta_{ijk} - theta1)(theta_{jkl} - theta2)
+
+Namely, we delete the "cos(phi)" term.
 
 
 LAMMPS is an open-source classical molecular dynamics code under GPL
