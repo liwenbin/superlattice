@@ -1,25 +1,8 @@
-The directory "SingleNanoParticle" contains
-the MATLAB code for generating LAMMPS data
-file for all-atom simulation of a single
-alkanethiol-gold nanoparticle, using Allinger
-et al's MM3 force field. A LAMMPS input file
-"lammps.input" is also provided.
+The directory "SingleNanoParticle" contains the MATLAB code for generating LAMMPS data file for all-atom simulation of a single alkanethiol-gold nanoparticle, using Allinger et al's MM3 force field. A LAMMPS input file "lammps.input" is also provided.
 
-The directory "Superlattice" contains
-the MATLAB code for generating LAMMPS data
-file for all-atom simulation of gold nanoparticle
-superlattice with different orientation. A LAMMPS
-input file "lammps.input" is also provided.
+The directory "Superlattice" contains the MATLAB code for generating LAMMPS data file for all-atom simulation of gold nanoparticle superlattice with different orientations. A LAMMPS input file "lammps.input" is also provided.
 
-The directory "LAMMPS_CodeChange_MM3" contains
-the LAMMPS codes we used to perform MM3 all-atom
-simulation. We provide the codes here because
-the LAMMPS "class2" angle and dihedral styles
-have been slightly changed for MM3 simulation.
-The force field changes are annotated in the
-file "LAMMPS_Classs2_ForceFieldChange.pdf"
-within the directory.
+The directory "LAMMPS" contains the LAMMPS codes we used to perform MM3 all-atom simulation. We provide the codes here because
+the LAMMPS "class2" angle and dihedral styles have been slightly changed for MM3 simulation. The force field changes are annotated in the file "LAMMPS_Classs2_ForceFieldChange.pdf" within the directory.
 
-LAMMPS is open-source software under GPL license.
-The license file is contained within the directory
-"LAMMPS_CodeChange_MM3".
+LAMMPS is open-source software under GPL license. See also http://lammps.sandia.gov/
