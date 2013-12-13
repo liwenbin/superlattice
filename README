@@ -1,3 +1,17 @@
+A set of MATLAB programs for generating input LAMMPS files for
+molecular dynamics simulation of alkanethiol-gold nanoparticle
+superlattice . LAMMPS is a fast, free classical molecular dynamics
+code under GPL license. See http://lammps.sandia.gov/ for more
+information.
+
+The directory "AllAtomModel" contains code for all-atom representation
+of alkanethiol molecules using Allinger et al's MM3 potential.
+
+The directory "UnitedAtomModel" contains code for coarse-grained
+representation of alkanethiol molecules using united-atom model.
+
+For details, please refer to the "README" files within respective
+directories.
 
 
 
