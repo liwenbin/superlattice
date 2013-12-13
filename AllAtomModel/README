@@ -17,5 +17,6 @@ MM3 all-atom simulation. We provide these codes because the LAMMPS
 simulation. The force field changes are annotated in the file
 "LAMMPS_Classs2_ForceFieldChange.pdf" within the directory.
 
-LAMMPS is open-source software under GPL license. See also
-http://lammps.sandia.gov/
+LAMMPS is an open-source classical molecular dynamics code under GPL
+license. The license file is contained within the directory LAMMPS/.
+See also http://lammps.sandia.gov/ for more information.
