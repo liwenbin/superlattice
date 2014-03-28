@@ -1,0 +1,88 @@
+##########################################################
+###  LAMMPS input file for gold-alkanethiol nanoparticles
+###  United Atom Model Simulation using Paul et al's Model
+###  Written by Wenbin Li, MIT, Nov 2013
+#########################################################
+
+########################################################
+###  General Simulation Setup
+
+dimension        3
+boundary         p p p
+
+units            real
+atom_style       molecular
+
+pair_style       hybrid morse 10.0 lj/cut 10.0
+pair_modify      shift yes
+bond_style       harmonic
+angle_style      cosine/squared
+dihedral_style   opls
+
+######################################################
+###  Read in LAMMPS data file
+###  Atomic coordinates and bond/angle/dihedral defined
+
+read_data        data.fusion
+
+######################################################
+###  Setting Force Field Parameters
+###  Atom type and symbol: 1-Au 2-S 3-CH2 4-CH3
+
+###  Gold-Gold interaction
+pair_coeff       1 1 morse  10.956 1.5830 3.0242
+###  Gold-Sulfur interaction
+pair_coeff       1 2 lj/cut 3.182  2.586
+###  Gold-CH2 Van der Waals
+pair_coeff       1 3 lj/cut 0.0678 3.42
+###  Gold-CH3 Van der Waals
+pair_coeff       1 4 lj/cut 0.0826 3.42
+
+###  Thiol non-bonded interactions
+pair_coeff       2 2 lj/cut 0.39743 4.25
+pair_coeff       3 3 lj/cut 0.09344 4.009
+pair_coeff       4 4 lj/cut 0.22644 4.009
+
+pair_coeff       2 3 lj/cut 0.1927 4.1295
+pair_coeff       2 4 lj/cut 0.3000 4.1295
+pair_coeff       3 4 lj/cut 0.1455 4.0090
+
+bond_coeff       1 222 1.81
+bond_coeff       2 317 1.53
+bond_coeff       3 317 1.53
+
+angle_coeff      1 62.5 114.4
+angle_coeff      2 60.0 110.01
+angle_coeff      3 60.0 110.01
+
+dihedral_coeff   1 1.600 -0.8670 3.24 0
+dihedral_coeff   2 1.600 -0.8670 3.24 0
+dihedral_coeff   3 1.600 -0.8670 3.24 0
+
+compute          1 all pair morse
+
+thermo           5000
+thermo_style     custom step temp pe etotal evdwl ebond eangle edihed c_1 pxx pyy pzz lx ly lz
+shell            mkdir config restart
+
+restart          1000000 restart/restart.*.nano
+
+#####################################################################
+###  Running Simulation
+
+minimize         1.0e-5 1.0e-5 1000 1000
+reset_timestep   0
+
+velocity         all create 600.0 12345 rot yes dist gaussian
+fix              1 all npt temp 300.0 300.0 100.0 aniso 0.0 0.0 100.0
+run              1000000
+unfix            1
+
+change_box       all triclinic
+
+dump             1 all cfg 100000 config/str.*.cfg id type xs ys zs id mol
+dump_modify      1 element Au S C C
+dump_modify      1 sort id
+
+fix              2 all npt temp 300.0 300.0 100.0 tri 0.0 0.0 100.0
+run              2000000
